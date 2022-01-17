@@ -1,4 +1,4 @@
-export const baseUrl = "https://auth.nomoreparties.co";
+export const baseUrl = process.env.NODE_ENV === 'production' ? 'http://api.romus.mesto.nomoredomains.work' : 'http://localhost:5000';
 
 export function register(password, email) {
   return fetch(`${baseUrl}/signup`, {
