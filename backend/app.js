@@ -13,7 +13,7 @@ const { createUser, login } = require('./controllers/users');
 const { isValidUrl } = require('./utils/methods');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT } = process.env || 5000;
+const { PORT } = process.env || 3000;
 const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
