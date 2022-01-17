@@ -31,6 +31,8 @@ const options = {
   credentials: true,
 };
 
+app.use('*', cors(options));
+
 app.use(cookieParser());
 app.use(express.json());
 
@@ -65,8 +67,6 @@ app.use(cardRouter);
 app.use(errorLogger);
 
 app.use(errors());
-
-app.use('*', cors(options));
 
 app.use(centralizedErrors);
 app.listen(PORT, () => {
