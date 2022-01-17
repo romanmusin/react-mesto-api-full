@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi, errors } = require('celebrate');
 
-
 const cors = require('cors');
 const router = require('./routes/users');
 const cardRouter = require('./routes/cards');
@@ -13,9 +12,8 @@ const auth = require('./middlewares/auth');
 const { createUser, login } = require('./controllers/users');
 const { isValidUrl } = require('./utils/methods');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const NotFoundError = require('./errors/notFoundErr');
 
-const { PORT = 5000 } = process.env;
+const { PORT } = process.env || 5000;
 const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
