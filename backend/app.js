@@ -7,11 +7,12 @@ const { celebrate, Joi, errors } = require('celebrate');
 const cors = require('cors');
 const router = require('./routes/users');
 const cardRouter = require('./routes/cards');
-const centralizedErrors = require('./middlewares/centralizedErrors');
 const auth = require('./middlewares/auth');
-const { createUser, login } = require('./controllers/users');
+const centralizedErrors = require('./middlewares/centralizedErrors');
+
 const { isValidUrl } = require('./utils/methods');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { createUser, login } = require('./controllers/users');
 
 const { PORT } = process.env || 3000;
 const app = express();
