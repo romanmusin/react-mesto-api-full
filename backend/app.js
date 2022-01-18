@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(requestLogger);
 
 const newLocal = '^[a-zA-Z0-9]{8,}$';
-app.post('/sign-up', celebrate({
+app.post('/signup', celebrate({
   body: Joi.object().keys({
     name: Joi.string().default('Жак-Ив Кусто').min(2).max(30),
     about: Joi.string().default('Исследователь').min(2).max(30),
@@ -52,7 +52,7 @@ app.post('/sign-up', celebrate({
   }),
 }), createUser);
 
-app.post('/sign-in', celebrate({
+app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string()
