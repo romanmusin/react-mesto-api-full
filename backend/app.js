@@ -63,7 +63,6 @@ app.post('/signin', celebrate({
 app.use(auth);
 
 app.use(router);
-app.use(cardRouter);
 app.use(errorLogger);
 
 app.use(errors());
