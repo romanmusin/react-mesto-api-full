@@ -52,7 +52,7 @@ app.use(cors({
     'https://romus.mesto.nomoredomains.work',
     'localhost:3000',
   ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+  methods: ['OPTIONS', 'GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
