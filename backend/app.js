@@ -5,8 +5,7 @@ const cookieParser = require('cookie-parser');
 const { celebrate, Joi, errors } = require('celebrate');
 
 const cors = require('cors');
-const router = require('./routes/users');
-const cardRouter = require('./routes/cards');
+const router = require('./routes');
 const auth = require('./middlewares/auth');
 const centralizedErrors = require('./middlewares/centralizedErrors');
 
