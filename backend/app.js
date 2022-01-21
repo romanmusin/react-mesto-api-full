@@ -32,7 +32,7 @@ const options = {
   credentials: true,
 };
 */
-
+/*
 const allowedCors = [
   'http://romus.mesto.nomoredomains.work',
   'https://romus.mesto.nomoredomains.work',
@@ -40,7 +40,7 @@ const allowedCors = [
   'https://api.romus.mesto.nomoredomains.work',
   'localhost:3000',
 ];
-/*
+
 // eslint-disable-next-line consistent-return
 app.use((req, res, next) => {
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
@@ -60,7 +60,7 @@ app.use((req, res, next) => {
   next();
 });
 */
-app.use('*', cors());
+app.use(cors());
 
 app.use(cookieParser());
 app.use(express.json());
@@ -98,10 +98,10 @@ app.post('/signin', celebrate({
 app.use(auth);
 
 app.use(router);
+
 app.use(errorLogger);
 
 app.use(errors());
-
 
 app.use(centralizedErrors);
 app.listen(PORT, () => {
