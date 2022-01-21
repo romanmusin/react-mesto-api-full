@@ -63,8 +63,8 @@ app.use((req, res, next) => {
 app.use('*', cors({
   origin: [
     'http://localhost:3000',
-    'http://romus.mesto.nomoredomains.work',
-    'https://romus.mesto.nomoredomains.work',
+    'http://api.romus.mesto.nomoredomains.work',
+    'https://api.romus.mesto.nomoredomains.work',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
