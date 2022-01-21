@@ -36,6 +36,8 @@ const options = {
 const allowedCors = [
   'http://romus.mesto.nomoredomains.work',
   'https://romus.mesto.nomoredomains.work',
+  'http://api.romus.mesto.nomoredomains.work',
+  'https://api.romus.mesto.nomoredomains.work',
   'localhost:3000',
 ];
 
