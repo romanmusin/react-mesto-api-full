@@ -63,7 +63,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('*', cors(allowedCors));
+
 
 app.use(cookieParser());
 app.use(express.json());
@@ -104,6 +104,7 @@ app.use(router);
 app.use(errorLogger);
 
 app.use(errors());
+app.use('*', cors(allowedCors));
 
 app.use(centralizedErrors);
 app.listen(PORT, () => {
