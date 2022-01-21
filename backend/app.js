@@ -38,6 +38,12 @@ app.use(express.json());
 
 app.use(requestLogger);
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 const newLocal = '^[a-zA-Z0-9]{8,}$';
 app.post('/signup', celebrate({
   body: Joi.object().keys({
