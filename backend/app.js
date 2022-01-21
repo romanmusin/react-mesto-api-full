@@ -47,11 +47,15 @@ app.use((req, res, next) => {
 });
 */
 app.use(cors({
-  origin: '*',
+  origin: [
+    'http://romus.mesto.nomoredomains.work',
+    'https://romus.mesto.nomoredomains.work',
+    'localhost:3000',
+  ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', '*', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
   credentials: true,
 }));
 
