@@ -40,13 +40,12 @@ const allowedCors = [
   'https://api.romus.mesto.nomoredomains.work',
   'localhost:3000',
 ];
-
+/*
 // eslint-disable-next-line consistent-return
 app.use((req, res, next) => {
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
   // проверяем, что источник запроса есть среди разрешённых
   res.header('Access-Control-Allow-Origin', origin);
-  res.header('Access-Control-Allow-Origin', '*');
   const { method } = req;
 
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
@@ -60,8 +59,8 @@ app.use((req, res, next) => {
 
   next();
 });
-
-app.use('*', cors(allowedCors));
+*/
+app.use('*', cors());
 
 app.use(cookieParser());
 app.use(express.json());
