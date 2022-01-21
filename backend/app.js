@@ -60,7 +60,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors(allowedCors));
+// app.use(cors(allowedCors));
 
 app.use(cookieParser());
 app.use(express.json());
