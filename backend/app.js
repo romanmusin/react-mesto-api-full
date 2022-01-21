@@ -41,11 +41,11 @@ const allowedCors = [
 
 // eslint-disable-next-line consistent-return
 app.use((req, res, next) => {
-  const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
+  // const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
   // проверяем, что источник запроса есть среди разрешённых
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
+  // if (allowedCors.includes(origin)) {
+  // }
+  res.header('Access-Control-Allow-Origin', '*');
   const { method } = req;
 
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
