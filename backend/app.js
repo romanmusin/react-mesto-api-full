@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 
   next();
 });
-*/
+
 app.use(cors({
   origin: [
     'http://romus.mesto.nomoredomains.work',
@@ -58,6 +58,8 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
   credentials: true,
 }));
+*/
+app.use(cors());
 
 app.use(cookieParser());
 app.use(express.json());
