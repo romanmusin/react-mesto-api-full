@@ -173,7 +173,7 @@ module.exports.login = (req, res, next) => {
               secure: true,
               sameSite: 'none',
             })
-            .send({ message: 'Вход совершен успешно', statuscode: 200 });
+            .send({ message: 'Вход совершен успешно' });
         })
         .catch(next);
     })
