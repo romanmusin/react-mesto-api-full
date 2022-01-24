@@ -171,7 +171,7 @@ module.exports.login = (req, res, next) => {
             .cookie('jwt', token, {
               maxAge: 3600000 * 24 * 7,
               secure: true,
-              sameSite: 'none',
+              domain: '.romus.mesto.nomoredomains.work',
             })
             .send({ message: 'Вход совершен успешно' });
         })
