@@ -5,7 +5,8 @@ const cookieParser = require('cookie-parser');
 const { celebrate, Joi, errors } = require('celebrate');
 
 const cors = require('cors');
-const router = require('./routes');
+const userRouter = require('./routes/users');
+const cardRouter = require('./routes/cards');
 const auth = require('./middlewares/auth');
 const centralizedErrors = require('./middlewares/centralizedErrors');
 
@@ -95,7 +96,8 @@ app.post('/signin', celebrate({
 
 app.use(auth);
 
-app.use(router);
+app.use(userRouter);
+app.use(cardRouter);
 
 app.use(errorLogger);
 
