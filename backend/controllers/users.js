@@ -59,6 +59,26 @@ module.exports.getUsers = (req, res, next) => {
 };
 
 module.exports.getUser = (req, res, next) => {
+  const userId = req.user._id;
+
+  User.findById(userId)
+    .then((user) => {
+      if (user) {
+        return res.send({
+          data: user,
+        });
+      }
+      throw new NotFoundError('Пользователь по указанному id не найден');
+    })
+    .catch((err) => {
+      if (err.name === 'CastError') {
+        next(new IncorrectDataError('Передан некорректный id пользователя'));
+      }
+      next(err);
+    });
+};
+
+module.exports.getUserById = (req, res, next) => {
   const { userId } = req.params;
 
   User
