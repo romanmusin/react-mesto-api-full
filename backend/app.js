@@ -45,15 +45,13 @@ app.use((req, res, next) => {
 
   next();
 });
-
-[
+*/
+app.use('*', cors({
+  origin: [
     'http://romus.mesto.nomoredomains.work',
     'https://romus.mesto.nomoredomains.work',
     'localhost:3000',
-  ]
-*/
-app.use(cors({
-  origin: '*',
+  ],
   methods: ['OPTIONS', 'GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
