@@ -65,7 +65,7 @@ module.exports.likeCard = (req, res, next) => {
       if (card) {
         return res.send({ data: card });
       }
-      throw new NotFoundError('Передан несуществующий _id карточки');
+      throw new NotFoundError('Передан несуществующий id карточки');
     })
     .catch((err) => {
       if (err.name === 'CastError') {
