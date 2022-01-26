@@ -74,7 +74,12 @@ app.post(
 
 app.get('/logout', (req, res, next) => {
   res
-    .clearCookie('jwt');
+    .cookie('jwt', '', {
+      maxAge: -1,
+      secure: true,
+      sameSite: 'none',
+    })
+    .send({ message: 'Выход' });
   next();
 });
 
