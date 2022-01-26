@@ -67,11 +67,7 @@ app.post('/signin', celebrate({
 
 app.get('/logout', (req, res, next) => {
   res
-    .clearCookie('jwt', {
-      maxAge: -1,
-      secure: true,
-      sameSite: 'none',
-    })
+    .clearCookie('jwt', { path: '/' })
     .send({ message: 'Выход совершен успешно' });
   next();
 });
