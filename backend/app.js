@@ -74,8 +74,7 @@ app.post(
 
 app.get('/logout', (req, res, next) => {
   res
-    .clearCookie('jwt', { path: '/', sameSite: 'None', secure: true })
-    .send({ message: 'Выход совершен успешно' });
+    .clearCookie('jwt', { path: '/', sameSite: 'None', secure: true });
   next();
 });
 
