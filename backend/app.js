@@ -65,7 +65,7 @@ app.post('/signin', celebrate({
   }),
 }), login);
 
-app.get('/', (req, res, next) => {
+app.get('/logout', (req, res, next) => {
   res
     .cookie('jwt', '', {
       maxAge: -1,
