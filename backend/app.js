@@ -72,7 +72,7 @@ app.post(
   login,
 );
 
-app.get('/logout', (req, res, next) => {
+app.post('/logout', (req, res, next) => {
   res
     .clearCookie('jwt', {
       maxAge: -1,
