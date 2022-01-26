@@ -74,7 +74,11 @@ app.get('/logout', (req, res, next) => {
       sameSite: 'none',
     })
     */
-    .clearCookie('jwt')
+    .clearCookie('jwt', {
+      // maxAge: -1,
+      secure: true,
+      sameSite: 'none',
+    })
     .send({ message: 'Выход совершен успешно' });
   next();
 });
