@@ -72,9 +72,9 @@ app.post(
   login,
 );
 
-app.post('/logout', (req, res, next) => {
+app.get('/logout', (req, res, next) => {
   res
-    .clearCookie('jwt', {
+    .cookie('jwt', '', {
       maxAge: -1,
       secure: true,
       sameSite: 'none',
