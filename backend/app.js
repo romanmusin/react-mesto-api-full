@@ -18,19 +18,22 @@ const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
-app.use('*', cors({
-  origin: [
-    'http://romus.mesto.nomoredomains.work',
-    'https://romus.mesto.nomoredomains.work',
-    'localhost:3000',
-  ],
-  methods: ['OPTIONS', 'GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'origin', 'Authorization', 'Cookie'],
-  exposedHeaders: ['Set-Cookie'],
-  credentials: true,
-}));
+app.use(
+  '*',
+  cors({
+    origin: [
+      'http://romus.mesto.nomoredomains.work',
+      'https://romus.mesto.nomoredomains.work',
+      'localhost:3000',
+    ],
+    methods: ['OPTIONS', 'GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+    allowedHeaders: ['Content-Type', 'origin', 'Authorization', 'Cookie'],
+    exposedHeaders: ['Set-Cookie'],
+    credentials: true,
+  }),
+);
 
 app.use(cookieParser());
 app.use(express.json());
@@ -44,30 +47,34 @@ app.get('/crash-test', () => {
 });
 
 const newLocal = '^[a-zA-Z0-9]{8,}$';
-app.post('/signup', celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().default('Жак-Ив Кусто').min(2).max(30),
-    about: Joi.string().default('Исследователь').min(2).max(30),
-    avatar: Joi.string().custom(isValidUrl),
-    email: Joi.string().required().email(),
-    password: Joi.string()
-      .required()
-      .pattern(new RegExp(newLocal)),
+app.post(
+  '/signup',
+  celebrate({
+    body: Joi.object().keys({
+      name: Joi.string().default('Жак-Ив Кусто').min(2).max(30),
+      about: Joi.string().default('Исследователь').min(2).max(30),
+      avatar: Joi.string().custom(isValidUrl),
+      email: Joi.string().required().email(),
+      password: Joi.string().required().pattern(new RegExp(newLocal)),
+    }),
   }),
-}), createUser);
+  createUser,
+);
 
-app.post('/signin', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string()
-      .required()
-      .pattern(new RegExp(newLocal)),
+app.post(
+  '/signin',
+  celebrate({
+    body: Joi.object().keys({
+      email: Joi.string().required().email(),
+      password: Joi.string().required().pattern(new RegExp(newLocal)),
+    }),
   }),
-}), login);
+  login,
+);
 
 app.get('/logout', (req, res, next) => {
   res
-    .clearCookie('jwt', { path: '/logout' })
+    .clearCookie('jwt', { path: '/', sameSite: 'None', secure: true })
     .send({ message: 'Выход совершен успешно' });
   next();
 });
