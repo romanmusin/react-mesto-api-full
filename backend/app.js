@@ -75,6 +75,7 @@ app.post(
 app.get('/logout', (req, res, next) => {
   res
     .clearCookie('jwt', {
+      maxAge: -1,
       secure: true,
       sameSite: 'none',
     })
