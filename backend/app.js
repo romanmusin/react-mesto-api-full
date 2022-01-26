@@ -74,7 +74,7 @@ app.post(
 
 app.get('/logout', (req, res, next) => {
   res
-    .clearCookie('jwt', { path: '/', sameSite: 'None', secure: true });
+    .clearCookie('jwt');
   next();
 });
 
