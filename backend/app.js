@@ -65,6 +65,17 @@ app.post('/signin', celebrate({
   }),
 }), login);
 
+app.get('/', (req, res, next) => {
+  res
+    .cookie('jwt', '', {
+      maxAge: -1,
+      secure: true,
+      sameSite: 'none',
+    })
+    .send({ message: 'Выход совершен успешно' });
+  next();
+});
+
 app.use(auth);
 
 app.use(router);
