@@ -192,7 +192,7 @@ module.exports.login = (req, res, next) => {
               maxAge: 3600000 * 24 * 7,
               sameSite: 'None',
               secure: true,
-              // domain: 'romus.mesto.nomoredomains.work',
+              domain: 'romus.mesto.nomoredomains.work',
             })
             .send({ message: 'Вход совершен успешно' });
         })
