@@ -67,7 +67,7 @@ app.post('/signin', celebrate({
 
 app.get('/logout', (req, res, next) => {
   res
-    .clearCookie('jwt', { path: '/' })
+    .clearCookie('jwt', { path: '/logout' })
     .send({ message: 'Выход совершен успешно' });
   next();
 });
