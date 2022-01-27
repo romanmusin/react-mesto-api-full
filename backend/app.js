@@ -85,11 +85,10 @@ app.get('/logout', (req, res) => (
 
 app.get('/logout', (req, res, next) => {
   res
-    .cookie('jwt', '', {
-      maxAge: -1,
-      // httpOnly: true,
+    .clearCookie('jwt', {
       secure: true,
       sameSite: 'none',
+      domain: 'romus.mesto.nomoredomains.work',
     })
     .send({ message: 'Выход совершен успешно' });
   next();
