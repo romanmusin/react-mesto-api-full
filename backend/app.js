@@ -72,16 +72,12 @@ app.post(
   login,
 );
 
-app.get('/logout', (req, res, next) => {
-  res
-    .cookie('jwt', '', {
-      maxAge: -1,
-      secure: true,
-      sameSite: 'none',
-    })
-    .send({ message: 'Выход' });
-  next();
-});
+app.get('/logout', (req, res) => res
+  .clearCookie('jwt', {
+    secure: true,
+    sameSite: 'none',
+    domain: 'romus.mesto.nomoredomains.work',
+  }));
 
 app.use(auth);
 
