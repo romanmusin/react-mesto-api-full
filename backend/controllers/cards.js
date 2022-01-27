@@ -33,7 +33,6 @@ module.exports.deleteCards = (req, res, next) => {
     .findById(cardId)
     .then((card) => {
       if (card.owner._id.toString() === userId) {
-        console.log(userId);
         card
           .findByIdAndRemove(cardId)
           .orFail(() => {
@@ -41,13 +40,12 @@ module.exports.deleteCards = (req, res, next) => {
           })
           .then((deletedCard) => {
             res.send({ data: deletedCard });
-            console.log(deletedCard);
           })
           .catch((err) => {
+            console.log(err);
             if (err.name === 'CastError') {
               next(new IncorrectDataError('Передан некорректный id при удалении карточки'));
             }
-            console.log(err);
             next(err);
           });
       } else {
