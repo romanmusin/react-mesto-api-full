@@ -40,6 +40,7 @@ module.exports.deleteCards = (req, res, next) => {
           })
           .then((deletedCard) => {
             res.send({ data: deletedCard });
+            console.log(deletedCard);
           })
           .catch((err) => {
             if (err.name === 'CastError') {
