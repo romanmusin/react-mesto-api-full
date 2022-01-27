@@ -97,10 +97,8 @@ app.get('/logout', (req, res, next) => {
 app.use(auth);
 
 app.use(router);
-
-app.use(errorLogger);
-
 app.use(errors());
+app.use(errorLogger);
 
 app.use(centralizedErrors);
 app.listen(PORT, () => {
