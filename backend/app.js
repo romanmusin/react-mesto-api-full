@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-spacing */
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -72,11 +73,27 @@ app.post(
   login,
 );
 
-app.get('/', (req, res) => res.clearCookie('jwt', {
-  sameSite: 'None',
-  secure: true,
-  domain: 'romus.mesto.nomoredomains.work',
-}));
+/*
+app.get('/logout', (req, res) => (
+  res.clearCookie('jwt', {
+    sameSite: 'None',
+    secure: true,
+    domain: 'romus.mesto.nomoredomains.work',
+  }).send({message: 'Excape'})
+));
+*/
+
+app.get('/logout', (req, res, next) => {
+  res
+    .cookie('jwt', '', {
+      maxAge: -1,
+      // httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+    })
+    .send({ message: 'Выход совершен успешно' });
+  next();
+});
 
 app.use(auth);
 
