@@ -43,11 +43,11 @@ module.exports.createUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new IncorrectDataError(err.message));
-      }
-      if (err.name === 'MongoServerError' && err.code === 11000) {
+      } else if (err.name === 'MongoServerError' && err.code === 11000) {
         next(new ConflictError('Пользователь с таким e-mail уже существует'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
@@ -73,8 +73,9 @@ module.exports.getUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new IncorrectDataError('Передан некорректный id пользователя'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
@@ -94,8 +95,9 @@ module.exports.getUserById = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new IncorrectDataError('Передан некорректный id пользователя'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
@@ -125,11 +127,11 @@ module.exports.updateUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new IncorrectDataError('Переданы некорректные данные при обновлении профиля'));
-      }
-      if (err.name === 'CastError') {
+      } else if (err.name === 'CastError') {
         next(new IncorrectDataError('Передан некорректный id пользователя'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
@@ -158,11 +160,11 @@ module.exports.updateAvatar = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new IncorrectDataError('Переданы некорректные данные при обновлении аватара'));
-      }
-      if (err.name === 'CastError') {
+      } else if (err.name === 'CastError') {
         next(new IncorrectDataError('Передан некорректный id пользователя'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
